@@ -3,16 +3,17 @@ import time
 import matplotlib
 import matplotlib.pyplot as plt 
 import numpy
-global timelist
+global timelis
 global seekorder
 timelist=[]
 seekorder=[]
 
 def timer(func):
     def wrapper(*args, **kwargs):
-        start=time.time()
+        start=time.perf_counter()
         result=func(*args, **kwargs)
-        end=time.time()
+        end=time.perf_counter()
+        print(end)
         timelist.append(end-start)
         seekorder.append(args[0])
         print (f"Finished in {end - start:.8f}  seconds: f({args[0]}) -> {result}")
@@ -22,7 +23,6 @@ def timer(func):
 @lru_cache
 @timer
 def fib(n:int)->int:
-    valun=n
     if n<=1:
         return n
     else:
