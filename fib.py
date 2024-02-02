@@ -13,7 +13,6 @@ def timer(func):
         start=time.perf_counter()
         result=func(*args, **kwargs)
         end=time.perf_counter()
-        print(end)
         timelist.append(end-start)
         seekorder.append(args[0])
         print (f"Finished in {end - start:.8f}  seconds: f({args[0]}) -> {result}")
